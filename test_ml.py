@@ -1,7 +1,7 @@
 import pytest
 from ml.model import train_model
 from sklearn.ensemble import RandomForestClassifier
-import numpy as numpy
+import numpy as np
 from ml.model import compute_model_metrics
 from ml.data import process_data
 import pandas as pd
@@ -37,8 +37,8 @@ def test_three():
     # Verify process_data outputs expected formats
     """
     sample_data = pd.DataFrame({
-        "feature1": ["A", "B", "A"]
-        "feature2": ["X", "Y", "X"]
+        "feature1": ["A", "B", "A"],
+        "feature2": ["X", "Y", "X"],
         "salary": [1, 0, 1]
     })
     categorical_features = ["feature1", "feature2"]
