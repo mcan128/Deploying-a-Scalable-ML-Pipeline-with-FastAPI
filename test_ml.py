@@ -1,28 +1,48 @@
 import pytest
-# TODO: add necessary import
+from ml.model import train_model
+from sklearn.ensemble import RandomForestClassifier
+import numpy as numpy
+from ml.model import compute_model_metrics
+from ml.data import process_data
+import pandas as pd
 
-# TODO: implement the first test. Change the function name and input as needed
 def test_one():
     """
-    # add description for the first test
+    # Ensure RandomForestClassifier is the correct model
     """
-    # Your code here
+    X_train = np.random.rand(10,5)
+
+    y_train = np.random.randint(0, 2, 10)
+
+    model = train_model(X_train, y_train)
+    assert isinstance(model, RandomForestClassifier), "Model is not a RandomForestClassifier"
     pass
 
 
-# TODO: implement the second test. Change the function name and input as needed
 def test_two():
     """
-    # add description for the second test
+    # Verify compute_model_metrics returns expected values
     """
-    # Your code here
+    y_true = [1, 0, 1, 1, 0]
+    preds = [1, 0, 1, 0, 1]
+    precision, recall, fbeta = compute_model_metrics(y_true, preds)
+    assert isinstance(precision, float), "Precision should be a float"
+    assert isinstance(recall, float), "Recall should be a float"
+    assert isinstance(fbeta, float), "F1-Score should be a float"
     pass
 
 
-# TODO: implement the third test. Change the function name and input as needed
 def test_three():
     """
-    # add description for the third test
+    # Verify process_data outputs expected formats
     """
-    # Your code here
+    sample_data = pd.DataFrame({
+        "feature1": ["A", "B", "A"]
+        "feature2": ["X", "Y", "X"]
+        "salary": [1, 0, 1]
+    })
+    categorical_features = ["feature1", "feature2"]
+    X, y, encoder, lb = process_data(sample_data, categorical_features, label="salary", training=True)
+    assert X.shape[0] == 3, "X should have 3 rows"
+    assert len(y) == 3, "y should have 3 elements"
     pass
