@@ -12,7 +12,7 @@ from ml.model import (
     save_model,
     train_model,
 )
-
+project_path = "/workspace/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
 data_path = "/workspace/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/data/census.csv"
 data = pd.read_csv(data_path)
 print(data.head())
@@ -32,7 +32,7 @@ cat_features = [
 ]
 
 X_train, y_train, encoder, lb = process_data(
-    train, categorical_features, label="salary", training=True
+    train, cat_features, label="salary", training=True
 )
 
 X_test, y_test, _, _ = process_data(
